@@ -90,6 +90,16 @@
             border-color: #8b949e;
             transform: translateY(-2px);
         }
+        .btn-feedback {
+            background: #1f6feb;
+            border-color: #1f6feb;
+            color: #fff;
+        }
+        .btn-feedback:hover {
+            background: #388bfd;
+            border-color: #388bfd;
+            transform: translateY(-2px);
+        }
         .toast {
             margin-top: 1.5rem;
             font-size: 0.9rem;
@@ -133,8 +143,15 @@
             border-top: 1px solid #30363d;
             padding-top: 1.5rem;
         }
+        .feedback-note {
+            color: #8b949e;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
         .utterances {
             max-width: 100%;
+            margin-top: 1rem;
         }
         @media (max-width: 520px) {
             .card { padding: 1.5rem 1rem; }
@@ -145,6 +162,7 @@
     </style>
 </head>
 <body>
+    <!-- Main card -->
     <div class="card">
         <h1>Kohlsify</h1>
         <p class="desc">
@@ -197,23 +215,31 @@
         </div>
         <div class="faq-item">
             <h3>Where can I report bugs or suggest features?</h3>
-            <p>Leave a comment in the Feedback section below or open an issue on GitHub.</p>
+            <p>Use the Feedback section below – either leave a comment (if visible) or click "Open Issue".</p>
         </div>
     </div>
 
-    <!-- Feedback Section (Utterances) -->
+    <!-- Feedback Section -->
     <div class="card" style="text-align: left;">
         <h2 class="section-title">Feedback</h2>
-        <p style="color: #8b949e; margin-bottom: 1.5rem;">
-            Leave your feedback, report issues, or suggest improvements. All comments are public.
+        <p style="color: #8b949e; margin-bottom: 1rem;">
+            Report issues, suggest features, or just leave a message.
         </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+            <a href="https://github.com/minecraftfornpm/Kohlsify/issues/new" 
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-feedback">Open Issue on GitHub</a>
+        </div>
+        <div class="feedback-note">
+            👉 Comments via Utterances (if visible). If not, use the button above.
+        </div>
         <div class="feedback-container">
             <div class="utterances" id="utterances-container"></div>
         </div>
     </div>
 
     <script>
-        // Copy script functionality
+        // Copy script
         (function() {
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
@@ -251,12 +277,12 @@
             });
         })();
 
-        // Utterances – comment system
+        // Utterances – comment system (optional)
         (function() {
-            // Replace with your GitHub repo (username/repo)
-            const repo = "minecraftfornpm/Kohlsify";
+            const repo = "minecraftfornpm/Kohlsify"; // change to your repo if needed
+            const container = document.getElementById('utterances-container');
 
-            // Check if Utterances script already exists
+            // Check if already loaded
             if (document.getElementById('utterances-script')) return;
 
             const script = document.createElement('script');
@@ -268,7 +294,11 @@
             script.setAttribute('crossorigin', 'anonymous');
             script.async = true;
 
-            const container = document.getElementById('utterances-container');
+            // If script fails to load, we don't show errors, just keep the button.
+            script.onerror = function() {
+                container.innerHTML = '<p style="color: #8b949e; text-align: center;">Comments not available. Please use the "Open Issue" button above.</p>';
+            };
+
             container.appendChild(script);
         })();
     </script>
