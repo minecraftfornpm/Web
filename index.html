@@ -12,16 +12,15 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background: #0d1117;
             color: #c9d1d9;
             padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .card {
-            max-width: 700px;
+            max-width: 800px;
             width: 100%;
             background: #161b22;
             border-radius: 16px;
@@ -29,6 +28,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             border: 1px solid #30363d;
             text-align: center;
+            margin-bottom: 2rem;
         }
         h1 {
             font-size: 2.8rem;
@@ -102,10 +102,45 @@
             opacity: 1;
             color: #58a6ff;
         }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            color: #f0e6d0;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+            text-align: left;
+        }
+        .faq-item {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 0.8rem 0;
+            border-left: 3px solid #238636;
+            text-align: left;
+        }
+        .faq-item h3 {
+            color: #f0e6d0;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            color: #8b949e;
+            line-height: 1.5;
+        }
+        .feedback-container {
+            margin-top: 2rem;
+            border-top: 1px solid #30363d;
+            padding-top: 1.5rem;
+        }
+        .utterances {
+            max-width: 100%;
+        }
         @media (max-width: 520px) {
             .card { padding: 1.5rem 1rem; }
             h1 { font-size: 2rem; }
             .btn { min-width: 100px; padding: 0.6rem 1rem; font-size: 0.8rem; }
+            .section-title { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -133,7 +168,52 @@
         <div id="toast" class="toast">Copied to clipboard!</div>
     </div>
 
+    <!-- FAQ Section -->
+    <div class="card" style="text-align: left;">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+            <h3>Script is free?</h3>
+            <p>Yes, script is fully free, no paid versions.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Script is have key?</h3>
+            <p>No, script is no have key.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is it safe to use?</h3>
+            <p>Yes, it's open source. You can review the code yourself. No malicious actions.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can I use it on other games?</h3>
+            <p>No, it's specifically made for Kohls Admin House X (game ID 14747334292).</p>
+        </div>
+        <div class="faq-item">
+            <h3>How to update the script?</h3>
+            <p>Just re-execute the loader script. The latest version will be fetched automatically.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Who created Kohlsify?</h3>
+            <p>nowhud (nowhudhejeir on Roblox).</p>
+        </div>
+        <div class="faq-item">
+            <h3>Where can I report bugs or suggest features?</h3>
+            <p>Leave a comment in the Feedback section below or open an issue on GitHub.</p>
+        </div>
+    </div>
+
+    <!-- Feedback Section (Utterances) -->
+    <div class="card" style="text-align: left;">
+        <h2 class="section-title">Feedback</h2>
+        <p style="color: #8b949e; margin-bottom: 1.5rem;">
+            Leave your feedback, report issues, or suggest improvements. All comments are public.
+        </p>
+        <div class="feedback-container">
+            <div class="utterances" id="utterances-container"></div>
+        </div>
+    </div>
+
     <script>
+        // Copy script functionality
         (function() {
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
@@ -169,6 +249,27 @@
                     document.body.removeChild(textarea);
                 }
             });
+        })();
+
+        // Utterances – comment system
+        (function() {
+            // Replace with your GitHub repo (username/repo)
+            const repo = "minecraftfornpm/Kohlsify";
+
+            // Check if Utterances script already exists
+            if (document.getElementById('utterances-script')) return;
+
+            const script = document.createElement('script');
+            script.id = 'utterances-script';
+            script.src = 'https://utteranc.es/client.js';
+            script.setAttribute('repo', repo);
+            script.setAttribute('issue-term', 'pathname');
+            script.setAttribute('theme', 'github-dark');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+
+            const container = document.getElementById('utterances-container');
+            container.appendChild(script);
         })();
     </script>
 </body>
