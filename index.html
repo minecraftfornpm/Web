@@ -142,16 +142,7 @@
             margin-top: 2rem;
             border-top: 1px solid #30363d;
             padding-top: 1.5rem;
-        }
-        .feedback-note {
-            color: #8b949e;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
             text-align: center;
-        }
-        .utterances {
-            max-width: 100%;
-            margin-top: 1rem;
         }
         @media (max-width: 520px) {
             .card { padding: 1.5rem 1rem; }
@@ -215,26 +206,20 @@
         </div>
         <div class="faq-item">
             <h3>Where can I report bugs or suggest features?</h3>
-            <p>Use the Feedback section below – either leave a comment (if visible) or click "Open Issue".</p>
+            <p>Click the "Send Feedback" button below – it will open a new issue on GitHub.</p>
         </div>
     </div>
 
     <!-- Feedback Section -->
     <div class="card" style="text-align: left;">
         <h2 class="section-title">Feedback</h2>
-        <p style="color: #8b949e; margin-bottom: 1rem;">
-            Report issues, suggest features, or just leave a message.
+        <p style="color: #8b949e; margin-bottom: 1.5rem;">
+            Report issues, suggest features, or leave a message. All feedback is public.
         </p>
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-            <a href="https://github.com/minecraftfornpm/Kohlsify/issues/new" 
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-feedback">Open Issue on GitHub</a>
-        </div>
-        <div class="feedback-note">
-            👉 Comments via Utterances (if visible). If not, use the button above.
-        </div>
         <div class="feedback-container">
-            <div class="utterances" id="utterances-container"></div>
+            <a href="https://github.com/minecraftfornpm/Web/issues/new" 
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-feedback">Send Feedback</a>
         </div>
     </div>
 
@@ -275,31 +260,6 @@
                     document.body.removeChild(textarea);
                 }
             });
-        })();
-
-        // Utterances – comment system (optional)
-        (function() {
-            const repo = "minecraftfornpm/Kohlsify"; // change to your repo if needed
-            const container = document.getElementById('utterances-container');
-
-            // Check if already loaded
-            if (document.getElementById('utterances-script')) return;
-
-            const script = document.createElement('script');
-            script.id = 'utterances-script';
-            script.src = 'https://utteranc.es/client.js';
-            script.setAttribute('repo', repo);
-            script.setAttribute('issue-term', 'pathname');
-            script.setAttribute('theme', 'github-dark');
-            script.setAttribute('crossorigin', 'anonymous');
-            script.async = true;
-
-            // If script fails to load, we don't show errors, just keep the button.
-            script.onerror = function() {
-                container.innerHTML = '<p style="color: #8b949e; text-align: center;">Comments not available. Please use the "Open Issue" button above.</p>';
-            };
-
-            container.appendChild(script);
         })();
     </script>
 </body>
