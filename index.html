@@ -14,13 +14,27 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: #0d1117;
             color: #c9d1d9;
-            padding: 1rem;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* Анимация появления */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .card {
-            max-width: 800px;
+            max-width: 700px;
             width: 100%;
             background: #161b22;
             border-radius: 16px;
@@ -28,78 +42,98 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             border: 1px solid #30363d;
             text-align: center;
+            animation: fadeSlideUp 0.7s ease-out;
+        }
+
+        /* Хедер с иконкой и названием */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             margin-bottom: 2rem;
         }
-        h1 {
-            font-size: 2.8rem;
+        .header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: #0d1117;
+            padding: 4px;
+            border: 1px solid #30363d;
+            object-fit: contain;
+        }
+        .header h1 {
+            font-size: 2.4rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #f0e6d0, #b8a7b0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
         }
-        .desc {
+
+        .sub {
             font-size: 1rem;
             color: #8b949e;
             line-height: 1.6;
-            margin-bottom: 2rem;
-            padding: 0 0.5rem;
+            margin-bottom: 2.5rem;
         }
-        .desc strong {
+        .sub strong {
             color: #f0e6d0;
             font-weight: 600;
         }
+
+        /* Кнопки */
         .btn-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 1rem;
             justify-content: center;
-            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
         }
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.7rem 1.5rem;
+            padding: 0.7rem 1.8rem;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
             border: none;
             transition: all 0.2s ease;
-            min-width: 120px;
             background: #21262d;
             color: #c9d1d9;
             border: 1px solid #30363d;
+            min-width: 140px;
         }
-        .btn-primary {
-            background: #238636;
-            border-color: #238636;
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: #2ea043;
-            border-color: #2ea043;
-            transform: translateY(-2px);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         .btn-secondary:hover {
             background: #30363d;
             border-color: #8b949e;
-            transform: translateY(-2px);
         }
-        .btn-feedback {
-            background: #1f6feb;
-            border-color: #1f6feb;
+
+        /* Главная кнопка – увеличенная */
+        .btn-primary {
+            background: #238636;
+            border-color: #238636;
             color: #fff;
+            font-size: 1.2rem;
+            padding: 0.9rem 2.5rem;
+            min-width: 200px;
+            box-shadow: 0 4px 14px rgba(35, 134, 54, 0.3);
         }
-        .btn-feedback:hover {
-            background: #388bfd;
-            border-color: #388bfd;
-            transform: translateY(-2px);
+        .btn-primary:hover {
+            background: #2ea043;
+            border-color: #2ea043;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(35, 134, 54, 0.4);
         }
+
         .toast {
             margin-top: 1.5rem;
             font-size: 0.9rem;
@@ -112,123 +146,57 @@
             opacity: 1;
             color: #58a6ff;
         }
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin: 1.5rem 0 1rem;
-            color: #f0e6d0;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 0.5rem;
-            text-align: left;
-        }
-        .faq-item {
-            background: #0d1117;
-            border-radius: 8px;
-            padding: 1rem 1.2rem;
-            margin: 0.8rem 0;
-            border-left: 3px solid #238636;
-            text-align: left;
-        }
-        .faq-item h3 {
-            color: #f0e6d0;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-        .faq-item p {
-            color: #8b949e;
-            line-height: 1.5;
-        }
-        .feedback-container {
+
+        .footer-note {
             margin-top: 2rem;
-            border-top: 1px solid #30363d;
+            font-size: 0.8rem;
+            color: #484f58;
+            border-top: 1px solid #21262d;
             padding-top: 1.5rem;
-            text-align: center;
         }
+
         @media (max-width: 520px) {
             .card { padding: 1.5rem 1rem; }
-            h1 { font-size: 2rem; }
-            .btn { min-width: 100px; padding: 0.6rem 1rem; font-size: 0.8rem; }
-            .section-title { font-size: 1.4rem; }
+            .header h1 { font-size: 1.8rem; }
+            .header img { width: 40px; height: 40px; }
+            .btn { min-width: 120px; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+            .btn-primary { min-width: 160px; font-size: 1rem; padding: 0.8rem 1.8rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Main card -->
+
     <div class="card">
-        <h1>Kohlsify</h1>
-        <p class="desc">
-            Roblox script for place "Kohls Admin House X"<br>
+        <!-- Хедер с иконкой и названием -->
+        <div class="header">
+            <img src="https://github.com/minecraftfornpm/Web/raw/refs/heads/main/Kohlsify.png" alt="Kohlsify icon" />
+            <h1>Kohlsify</h1>
+        </div>
+
+        <div class="sub">
+            Roblox script for <strong>Kohls Admin House X</strong><br>
             creator <strong>nowhud</strong> (nowhudhejeir in roblox)
-        </p>
-        <div class="btn-group">
-            <a href="https://raw.githubusercontent.com/minecraftfornpm/Kohlsify/refs/heads/main/Kohlsify.lua"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-secondary">see source (Release)</a>
-            <a href="https://raw.githubusercontent.com/minecraftfornpm/Kohlsify/refs/heads/main/KohlsifyBeta.lua"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-secondary">see source (Beta)</a>
-            <a href="https://raw.githubusercontent.com/minecraftfornpm/Kohlsify/refs/heads/main/Loader.lua"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-secondary">see source (Loader)</a>
         </div>
+
+        <!-- Три кнопки -->
         <div class="btn-group">
-            <button id="copyBtn" class="btn btn-primary">Copy Script</button>
+            <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">See source</a>
+            <button id="copyBtn" class="btn btn-primary">Copy script</button>
+            <a href="https://pastebin.com/raw/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">If no copied</a>
         </div>
+
         <div id="toast" class="toast">Copied to clipboard!</div>
-    </div>
 
-    <!-- FAQ Section -->
-    <div class="card" style="text-align: left;">
-        <h2 class="section-title">FAQ</h2>
-        <div class="faq-item">
-            <h3>Script is free?</h3>
-            <p>Yes, script is fully free, no paid versions.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Script is have key?</h3>
-            <p>No, script is no have key.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Is it safe to use?</h3>
-            <p>Yes, it's open source. You can review the code yourself. No malicious actions.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Can I use it on other games?</h3>
-            <p>No, it's specifically made for Kohls Admin House X (game ID 14747334292).</p>
-        </div>
-        <div class="faq-item">
-            <h3>How to update the script?</h3>
-            <p>Just re-execute the loader script. The latest version will be fetched automatically.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Who created Kohlsify?</h3>
-            <p>nowhud (nowhudhejeir on Roblox).</p>
-        </div>
-        <div class="faq-item">
-            <h3>Where can I report bugs or suggest features?</h3>
-            <p>Click the "Send Feedback" button below – it will open a new issue on GitHub.</p>
-        </div>
-    </div>
-
-    <!-- Feedback Section -->
-    <div class="card" style="text-align: left;">
-        <h2 class="section-title">Feedback</h2>
-        <p style="color: #8b949e; margin-bottom: 1.5rem;">
-            Report issues, suggest features, or leave a message. All feedback is public.
-        </p>
-        <div class="feedback-container">
-            <a href="https://github.com/minecraftfornpm/Web/issues/new" 
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-feedback">Send Feedback</a>
+        <div class="footer-note">
+            Encrypted for protection &bull; open source loader
         </div>
     </div>
 
     <script>
-        // Copy script
         (function() {
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
-            const scriptText = `loadstring(game:HttpGet("https://raw.githubusercontent.com/minecraftfornpm/Kohlsify/refs/heads/main/Loader.lua"))()`;
+            const scriptText = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
 
             let timeoutId = null;
 
@@ -247,6 +215,7 @@
                     await navigator.clipboard.writeText(scriptText);
                     showToast('Copied to clipboard!');
                 } catch (err) {
+                    // fallback
                     const textarea = document.createElement('textarea');
                     textarea.value = scriptText;
                     document.body.appendChild(textarea);
@@ -262,5 +231,6 @@
             });
         })();
     </script>
+
 </body>
 </html>
