@@ -22,7 +22,6 @@
             padding: 1rem;
         }
 
-        /* Анимация появления */
         @keyframes fadeSlideUp {
             0% {
                 opacity: 0;
@@ -45,7 +44,6 @@
             animation: fadeSlideUp 0.7s ease-out;
         }
 
-        /* Хедер с иконкой и названием */
         .header {
             display: flex;
             align-items: center;
@@ -66,7 +64,7 @@
             font-size: 2.4rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #ffffff; /* Белый */
+            color: #ffffff;
             background: none;
             -webkit-text-fill-color: #ffffff;
         }
@@ -78,11 +76,23 @@
             margin-bottom: 2.5rem;
         }
         .sub strong {
-            color: #ffffff; /* Белый */
+            color: #ffffff;
             font-weight: 600;
         }
+        .sub .legacy-note {
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #8b949e;
+            background: #1c2128;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #da3633;
+        }
+        .sub .legacy-note strong {
+            color: #f0a6a6;
+        }
 
-        /* Кнопки */
         .btn-group {
             display: flex;
             flex-wrap: wrap;
@@ -116,7 +126,6 @@
             border-color: #8b949e;
         }
 
-        /* Главная кнопка – увеличенная */
         .btn-primary {
             background: #238636;
             border-color: #238636;
@@ -166,7 +175,6 @@
 <body>
 
     <div class="card">
-        <!-- Хедер с иконкой и названием -->
         <div class="header">
             <img src="https://github.com/minecraftfornpm/Web/raw/refs/heads/main/Kohlsify.png" alt="Kohlsify icon" />
             <h1>Kohlsify</h1>
@@ -175,9 +183,11 @@
         <div class="sub">
             Roblox script for <strong>Kohls Admin House X</strong><br>
             creator <strong>nowhud</strong> (nowhudhejeir in roblox)
+            <span class="legacy-note">
+                ⚠️ Also available for <strong>Kohls Admin House Legacy</strong>, but <strong>not recommended</strong> – may work poorly or cause issues.
+            </span>
         </div>
 
-        <!-- Три кнопки -->
         <div class="btn-group">
             <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">See source</a>
             <button id="copyBtn" class="btn btn-primary">Copy script</button>
@@ -214,7 +224,6 @@
                     await navigator.clipboard.writeText(scriptText);
                     showToast('Copied to clipboard!');
                 } catch (err) {
-                    // fallback
                     const textarea = document.createElement('textarea');
                     textarea.value = scriptText;
                     document.body.appendChild(textarea);
