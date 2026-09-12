@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kohlsify</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: #0d1117;
@@ -18,19 +14,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
         }
-
         @keyframes fadeSlideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         .card {
             max-width: 700px;
@@ -42,71 +30,51 @@
             border: 1px solid #30363d;
             text-align: center;
             animation: fadeSlideUp 0.7s ease-out;
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
             margin-bottom: 2rem;
         }
-        .header img {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
+
+        .top-icon {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
             background: #0d1117;
-            padding: 4px;
-            border: 1px solid #30363d;
+            padding: 6px;
+            border: 2px solid #30363d;
             object-fit: contain;
+            margin-bottom: 1.2rem;
         }
-        .header h1 {
+
+        .typed-title {
             font-size: 2.4rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             color: #ffffff;
-            background: none;
-            -webkit-text-fill-color: #ffffff;
+            min-height: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .sub {
-            font-size: 1rem;
+        .tagline {
+            font-size: 0.95rem;
             color: #8b949e;
             line-height: 1.6;
-            margin-bottom: 2.5rem;
-        }
-        .sub strong {
-            color: #ffffff;
-            font-weight: 600;
-        }
-        .sub .legacy-note {
-            display: block;
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
-            color: #8b949e;
-            background: #1c2128;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            border-left: 3px solid #da3633;
-        }
-        .sub .legacy-note strong {
-            color: #f0a6a6;
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
         }
 
         .btn-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.75rem;
             justify-content: center;
-            margin-top: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.7rem 1.8rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 30px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
@@ -115,7 +83,7 @@
             background: #21262d;
             color: #c9d1d9;
             border: 1px solid #30363d;
-            min-width: 140px;
+            min-width: 130px;
         }
         .btn:hover {
             transform: translateY(-3px);
@@ -125,14 +93,13 @@
             background: #30363d;
             border-color: #8b949e;
         }
-
         .btn-primary {
             background: #238636;
             border-color: #238636;
             color: #fff;
-            font-size: 1.2rem;
-            padding: 0.9rem 2.5rem;
-            min-width: 200px;
+            font-size: 1.15rem;
+            padding: 0.9rem 2.2rem;
+            min-width: 180px;
             box-shadow: 0 4px 14px rgba(35, 134, 54, 0.3);
         }
         .btn-primary:hover {
@@ -150,65 +117,115 @@
             transition: opacity 0.3s;
             opacity: 0;
         }
-        .toast.show {
-            opacity: 1;
-            color: #58a6ff;
+        .toast.show { opacity: 1; color: #58a6ff; }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+            color: #ffffff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+            text-align: left;
+        }
+        .faq-item {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 0.8rem 0;
+            border-left: 3px solid #238636;
+            text-align: left;
+        }
+        .faq-item h3 {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            color: #8b949e;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
-        .footer-note {
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #484f58;
-            border-top: 1px solid #21262d;
-            padding-top: 1.5rem;
+        .second-typed {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            min-height: 2.5rem;
         }
 
         @media (max-width: 520px) {
             .card { padding: 1.5rem 1rem; }
-            .header h1 { font-size: 1.8rem; }
-            .header img { width: 40px; height: 40px; }
-            .btn { min-width: 120px; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+            .typed-title { font-size: 1.8rem; }
+            .top-icon { width: 80px; height: 80px; }
+            .btn { min-width: 110px; padding: 0.6rem 1.1rem; font-size: 0.8rem; }
             .btn-primary { min-width: 160px; font-size: 1rem; padding: 0.8rem 1.8rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Main card -->
     <div class="card">
-        <div class="header">
-            <img src="https://github.com/minecraftfornpm/Web/raw/refs/heads/main/Kohlsify.png" alt="Kohlsify icon" />
-            <h1>Kohlsify</h1>
-        </div>
-
-        <div class="sub">
-            Roblox script for <strong>Kohls Admin House X</strong><br>
-            creator <strong>nowhud</strong> (nowhudhejeir in roblox)
-            <span class="legacy-note">
-                ⚠️ Also available for <strong>Kohls Admin House Legacy</strong>, but <strong>not recommended</strong> – may work poorly or cause issues.
-            </span>
-        </div>
+        <img class="top-icon" src="https://github.com/minecraftfornpm/Web/raw/refs/heads/main/Kohlsify.png" alt="Kohlsify" />
+        <h1 class="typed-title" id="typedTitle"></h1>
+        <p class="tagline">
+            The best (3-5) script for KAH X/Legacy, fully open source,<br>
+            semi-private, many updates, cool developer,<br>
+            no skids it only in kohlsify
+        </p>
 
         <div class="btn-group">
             <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">See source</a>
             <button id="copyBtn" class="btn btn-primary">Copy script</button>
-            <a href="https://pastebin.com/raw/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">If no copied</a>
+            <a href="https://pastebin.com/dl/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Download</a>
+        </div>
+        <div class="btn-group">
+            <a href="https://pastebin.com/raw/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Open source</a>
+            <a href="https://pastebin.com/raw/NnfhEh4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Open source (UI)</a>
         </div>
 
         <div id="toast" class="toast">Copied to clipboard!</div>
+    </div>
 
-        <div class="footer-note">
-            Encrypted for protection &bull; open source loader
+    <!-- FAQ card -->
+    <div class="card">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-item">
+            <h3>Script is free?</h3>
+            <p>Yes, script is fully free, no paid versions.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Script is have key?</h3>
+            <p>No, script is no have key.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is it safe to use?</h3>
+            <p>Yes, it's fully open source. You can review the code yourself.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Where can I use it?</h3>
+            <p>Kohls Admin House X (main). Also works on Kohls Admin House Legacy, but not recommended – may work poorly.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Who created Kohlsify?</h3>
+            <p>nowhud (nowhudhejeir on Roblox).</p>
         </div>
     </div>
 
+    <!-- Second typing animation (faster, need to scroll) -->
+    <div class="card" style="text-align: center;">
+        <div class="second-typed" id="typedTitle2"></div>
+    </div>
+
     <script>
+        // Copy script
         (function() {
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
             const scriptText = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
-
             let timeoutId = null;
-
             function showToast(message) {
                 toast.textContent = message;
                 toast.classList.add('show');
@@ -218,7 +235,6 @@
                     timeoutId = null;
                 }, 2500);
             }
-
             copyBtn.addEventListener('click', async function() {
                 try {
                     await navigator.clipboard.writeText(scriptText);
@@ -238,6 +254,37 @@
                 }
             });
         })();
+
+        // Typing animation
+        function typeText(element, text, speed, callback) {
+            let i = 0;
+            element.textContent = '';
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent = text.substring(0, i + 1) + '_';
+                    i++;
+                } else {
+                    element.textContent = text;
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+            }, speed);
+        }
+
+        // Main title
+        typeText(document.getElementById('typedTitle'), 'KOHLSIFY', 180);
+
+        // Second typing - triggers when scrolled into view
+        const title2 = document.getElementById('typedTitle2');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    typeText(title2, 'KOHLSIFY', 70);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(title2);
     </script>
 
 </body>
