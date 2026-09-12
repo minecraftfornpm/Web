@@ -170,7 +170,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 0.7rem 1rem;
+            padding: 0.6rem 0.8rem;
             background: #0a1220;
             border-bottom: 1px solid #1e3a5f;
         }
@@ -182,11 +182,46 @@
         .dot.yellow { background: #38bdf8; opacity: 0.7; }
         .dot.green { background: #67e8f9; opacity: 0.7; }
         .terminal-title {
-            margin-left: auto;
+            margin-left: 10px;
             font-size: 0.8rem;
-            color: #475569;
+            color: #64748b;
             letter-spacing: 1px;
             font-family: 'Courier New', monospace;
+        }
+        .terminal-actions {
+            margin-left: auto;
+            display: flex;
+            gap: 0.4rem;
+        }
+        .terminal-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid #1e3a5f;
+            background: #0f1e33;
+            color: #93c5fd;
+            transition: all 0.15s ease;
+        }
+        .terminal-btn:hover {
+            background: #15304f;
+            border-color: #38bdf8;
+            color: #e0f2fe;
+        }
+        .terminal-btn.primary {
+            background: linear-gradient(135deg, #0284c7, #06b6d4);
+            border-color: #0ea5e9;
+            color: #fff;
+        }
+        .terminal-btn.primary:hover {
+            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
+            border-color: #38bdf8;
         }
         .terminal-body {
             padding: 1.2rem 1.4rem;
@@ -216,7 +251,9 @@
             .top-icon { width: 240px; padding: 8px; }
             .btn { min-width: 110px; padding: 0.6rem 1.1rem; font-size: 0.8rem; }
             .btn-primary { min-width: 160px; font-size: 1rem; padding: 0.8rem 1.8rem; }
-            .terminal-body { font-size: 0.8rem; }
+            .terminal-body { font-size: 0.75rem; }
+            .terminal-btn { font-size: 0.65rem; padding: 0.25rem 0.55rem; }
+            .terminal-title { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -275,17 +312,22 @@
             <span class="dot red"></span>
             <span class="dot yellow"></span>
             <span class="dot green"></span>
-            <span class="terminal-title">kohlsify — executor</span>
+            <span class="terminal-title">skid executor</span>
+            <div class="terminal-actions">
+                <button class="terminal-btn primary" id="termCopyBtn">Copy</button>
+                <a class="terminal-btn" href="https://pastebin.com/dl/EZ1f4QMe" target="_blank" rel="noopener noreferrer">Download</a>
+            </div>
         </div>
         <div class="terminal-body" id="terminalBody"></div>
     </div>
 
     <script>
-        // Copy script
+        const SCRIPT_TEXT = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
+
+        // Copy script from main button
         (function() {
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
-            const scriptText = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
             let timeoutId = null;
             function showToast(message) {
                 toast.textContent = message;
@@ -296,13 +338,13 @@
                     timeoutId = null;
                 }, 2500);
             }
-            copyBtn.addEventListener('click', async function() {
-                try {
-                    await navigator.clipboard.writeText(scriptText);
-                    showToast('Copied to clipboard!');
-                } catch (err) {
+            function doCopy() {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(SCRIPT_TEXT).then(() => showToast('Copied to clipboard!'));
+                }
+                return new Promise((resolve) => {
                     const textarea = document.createElement('textarea');
-                    textarea.value = scriptText;
+                    textarea.value = SCRIPT_TEXT;
                     document.body.appendChild(textarea);
                     textarea.select();
                     try {
@@ -312,11 +354,19 @@
                         showToast('Failed to copy. Please copy manually.');
                     }
                     document.body.removeChild(textarea);
-                }
+                    resolve();
+                });
+            }
+            copyBtn.addEventListener('click', doCopy);
+
+            // Terminal copy button
+            const termCopyBtn = document.getElementById('termCopyBtn');
+            termCopyBtn.addEventListener('click', () => {
+                doCopy();
             });
         })();
 
-        // Main title typing
+        // Type only when visible
         function typeText(element, text, speed, callback) {
             let i = 0;
             element.textContent = '';
@@ -331,10 +381,36 @@
                 }
             }, speed);
         }
-        typeText(document.getElementById('typedTitle'), 'KOHLSIFY', 180);
 
-        // Terminal typing animation
-        (function() {
+        // Title typing when visible
+        const titleEl = document.getElementById('typedTitle');
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    typeText(titleEl, 'KOHLSIFY', 180);
+                    titleObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        titleObserver.observe(titleEl);
+
+        // Terminal typing when visible
+        const terminal = document.querySelector('.terminal');
+        const terminalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startTerminalTyping();
+                    terminalObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        terminalObserver.observe(terminal);
+
+        let terminalStarted = false;
+        function startTerminalTyping() {
+            if (terminalStarted) return;
+            terminalStarted = true;
+
             const body = document.getElementById('terminalBody');
             const prompt = document.createElement('div');
             prompt.innerHTML = '<span class="prompt">$</span> ';
@@ -347,12 +423,10 @@
             cursor.className = 'cursor';
             prompt.appendChild(cursor);
 
-            const code = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
-
             let i = 0;
             function typeCode() {
-                if (i < code.length) {
-                    codeSpan.textContent += code.charAt(i);
+                if (i < SCRIPT_TEXT.length) {
+                    codeSpan.textContent += SCRIPT_TEXT.charAt(i);
                     i++;
                     setTimeout(typeCode, 40);
                 } else {
@@ -364,10 +438,8 @@
                     }, 500);
                 }
             }
-
-            // start terminal animation after title finishes
-            setTimeout(typeCode, 1800);
-        })();
+            typeCode();
+        }
     </script>
 
 </body>
