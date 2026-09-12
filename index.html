@@ -8,8 +8,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
+            background: #070b14;
+            color: #cbd5e1;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -20,42 +20,50 @@
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.25), 0 0 60px rgba(56, 189, 248, 0.1); }
+            50% { box-shadow: 0 0 45px rgba(56, 189, 248, 0.5), 0 0 90px rgba(56, 189, 248, 0.2); }
+        }
         .card {
             max-width: 700px;
             width: 100%;
-            background: #161b22;
+            background: #0d1526;
             border-radius: 16px;
             padding: 2.5rem 2rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            border: 1px solid #30363d;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            border: 1px solid #1e3a5f;
             text-align: center;
             animation: fadeSlideUp 0.7s ease-out;
             margin-bottom: 2rem;
         }
 
         .top-icon {
-            width: 96px;
-            height: 96px;
+            width: 480px;
+            max-width: 90%;
+            height: auto;
             border-radius: 50%;
-            background: #0d1117;
-            padding: 6px;
-            border: 2px solid #30363d;
+            background: #070b14;
+            padding: 12px;
+            border: 3px solid #1e3a5f;
             object-fit: contain;
-            margin-bottom: 1.2rem;
+            margin: 0 auto 1.5rem;
+            display: block;
+            animation: pulseGlow 3s ease-in-out infinite;
         }
 
         .typed-title {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            letter-spacing: 2px;
             color: #ffffff;
             min-height: 3rem;
             margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
         }
 
         .tagline {
             font-size: 0.95rem;
-            color: #8b949e;
+            color: #7d8fa3;
             line-height: 1.6;
             margin-bottom: 2rem;
             padding: 0 0.5rem;
@@ -78,62 +86,61 @@
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            border: none;
+            border: 1px solid #1e3a5f;
             transition: all 0.2s ease;
-            background: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
+            background: #0f1e33;
+            color: #93c5fd;
             min-width: 130px;
         }
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .btn-secondary:hover {
-            background: #30363d;
-            border-color: #8b949e;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+            border-color: #38bdf8;
+            color: #e0f2fe;
         }
         .btn-primary {
-            background: #238636;
-            border-color: #238636;
-            color: #fff;
+            background: linear-gradient(135deg, #0284c7, #06b6d4);
+            border-color: #0ea5e9;
+            color: #ffffff;
             font-size: 1.15rem;
             padding: 0.9rem 2.2rem;
             min-width: 180px;
-            box-shadow: 0 4px 14px rgba(35, 134, 54, 0.3);
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.5);
         }
         .btn-primary:hover {
-            background: #2ea043;
-            border-color: #2ea043;
+            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
+            border-color: #38bdf8;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(35, 134, 54, 0.4);
+            box-shadow: 0 6px 28px rgba(56, 189, 248, 0.65);
+            color: #ffffff;
         }
 
         .toast {
             margin-top: 1.5rem;
             font-size: 0.9rem;
-            color: #8b949e;
+            color: #7d8fa3;
             min-height: 1.5rem;
             transition: opacity 0.3s;
             opacity: 0;
         }
-        .toast.show { opacity: 1; color: #58a6ff; }
+        .toast.show { opacity: 1; color: #38bdf8; }
 
         .section-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin: 0 0 1rem 0;
             color: #ffffff;
-            border-bottom: 1px solid #30363d;
+            border-bottom: 1px solid #1e3a5f;
             padding-bottom: 0.5rem;
             text-align: left;
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
         }
         .faq-item {
-            background: #0d1117;
+            background: #0a1220;
             border-radius: 8px;
             padding: 1rem 1.2rem;
             margin: 0.8rem 0;
-            border-left: 3px solid #238636;
+            border-left: 3px solid #0ea5e9;
             text-align: left;
         }
         .faq-item h3 {
@@ -142,25 +149,74 @@
             margin-bottom: 0.3rem;
         }
         .faq-item p {
-            color: #8b949e;
+            color: #7d8fa3;
             line-height: 1.5;
             font-size: 0.9rem;
         }
 
-        .second-typed {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-align: center;
-            min-height: 2.5rem;
+        /* Terminal / executor */
+        .terminal {
+            background: #050a14;
+            border: 1px solid #1e3a5f;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 40px rgba(56, 189, 248, 0.05);
+            overflow: hidden;
+            text-align: left;
+            max-width: 700px;
+            width: 100%;
+            animation: fadeSlideUp 0.9s ease-out;
+        }
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.7rem 1rem;
+            background: #0a1220;
+            border-bottom: 1px solid #1e3a5f;
+        }
+        .dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+        }
+        .dot.red { background: #0ea5e9; opacity: 0.7; }
+        .dot.yellow { background: #38bdf8; opacity: 0.7; }
+        .dot.green { background: #67e8f9; opacity: 0.7; }
+        .terminal-title {
+            margin-left: auto;
+            font-size: 0.8rem;
+            color: #475569;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+        .terminal-body {
+            padding: 1.2rem 1.4rem;
+            font-family: 'Courier New', Consolas, monospace;
+            font-size: 0.95rem;
+            color: #67e8f9;
+            min-height: 140px;
+            line-height: 1.6;
+        }
+        .terminal-body .prompt { color: #38bdf8; }
+        .cursor {
+            display: inline-block;
+            background: #38bdf8;
+            width: 9px;
+            height: 1.05em;
+            vertical-align: text-bottom;
+            animation: blink 0.9s steps(2) infinite;
+        }
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
 
         @media (max-width: 520px) {
             .card { padding: 1.5rem 1rem; }
-            .typed-title { font-size: 1.8rem; }
-            .top-icon { width: 80px; height: 80px; }
+            .typed-title { font-size: 1.8rem; letter-spacing: 1px; }
+            .top-icon { width: 240px; padding: 8px; }
             .btn { min-width: 110px; padding: 0.6rem 1.1rem; font-size: 0.8rem; }
             .btn-primary { min-width: 160px; font-size: 1rem; padding: 0.8rem 1.8rem; }
+            .terminal-body { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -177,13 +233,12 @@
         </p>
 
         <div class="btn-group">
-            <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">See source</a>
+            <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn">See source</a>
             <button id="copyBtn" class="btn btn-primary">Copy script</button>
-            <a href="https://pastebin.com/dl/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Download</a>
+            <a href="https://pastebin.com/dl/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn">Download</a>
         </div>
         <div class="btn-group">
-            <a href="https://pastebin.com/raw/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Open source</a>
-            <a href="https://pastebin.com/raw/NnfhEh4r" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Open source (UI)</a>
+            <a href="https://pastebin.com/raw/NnfhEh4r" target="_blank" rel="noopener noreferrer" class="btn">See source (UI)</a>
         </div>
 
         <div id="toast" class="toast">Copied to clipboard!</div>
@@ -214,9 +269,15 @@
         </div>
     </div>
 
-    <!-- Second typing animation (faster, need to scroll) -->
-    <div class="card" style="text-align: center;">
-        <div class="second-typed" id="typedTitle2"></div>
+    <!-- Terminal / executor window -->
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">kohlsify — executor</span>
+        </div>
+        <div class="terminal-body" id="terminalBody"></div>
     </div>
 
     <script>
@@ -255,7 +316,7 @@
             });
         })();
 
-        // Typing animation
+        // Main title typing
         function typeText(element, text, speed, callback) {
             let i = 0;
             element.textContent = '';
@@ -270,21 +331,43 @@
                 }
             }, speed);
         }
-
-        // Main title
         typeText(document.getElementById('typedTitle'), 'KOHLSIFY', 180);
 
-        // Second typing - triggers when scrolled into view
-        const title2 = document.getElementById('typedTitle2');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    typeText(title2, 'KOHLSIFY', 70);
-                    observer.unobserve(entry.target);
+        // Terminal typing animation
+        (function() {
+            const body = document.getElementById('terminalBody');
+            const prompt = document.createElement('div');
+            prompt.innerHTML = '<span class="prompt">$</span> ';
+            body.appendChild(prompt);
+
+            const codeSpan = document.createElement('span');
+            prompt.appendChild(codeSpan);
+
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            prompt.appendChild(cursor);
+
+            const code = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
+
+            let i = 0;
+            function typeCode() {
+                if (i < code.length) {
+                    codeSpan.textContent += code.charAt(i);
+                    i++;
+                    setTimeout(typeCode, 40);
+                } else {
+                    setTimeout(() => {
+                        cursor.style.display = 'none';
+                        const done = document.createElement('div');
+                        done.innerHTML = '<span class="prompt">$</span> <span style="color:#67e8f9;">Script loaded successfully.</span>';
+                        body.appendChild(done);
+                    }, 500);
                 }
-            });
-        }, { threshold: 0.5 });
-        observer.observe(title2);
+            }
+
+            // start terminal animation after title finishes
+            setTimeout(typeCode, 1800);
+        })();
     </script>
 
 </body>
