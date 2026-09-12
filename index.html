@@ -272,7 +272,6 @@
         <div class="btn-group">
             <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn">See source</a>
             <button id="copyBtn" class="btn btn-primary">Copy script</button>
-            <a href="https://pastebin.com/dl/EZ1f4QMe" target="_blank" rel="noopener noreferrer" class="btn">Download</a>
         </div>
         <div class="btn-group">
             <a href="https://pastebin.com/raw/NnfhEh4r" target="_blank" rel="noopener noreferrer" class="btn">See source (UI)</a>
@@ -315,7 +314,6 @@
             <span class="terminal-title">skid executor</span>
             <div class="terminal-actions">
                 <button class="terminal-btn primary" id="termCopyBtn">Copy</button>
-                <a class="terminal-btn" href="https://pastebin.com/dl/EZ1f4QMe" target="_blank" rel="noopener noreferrer">Download</a>
             </div>
         </div>
         <div class="terminal-body" id="terminalBody"></div>
@@ -324,7 +322,7 @@
     <script>
         const SCRIPT_TEXT = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
 
-        // Copy script from main button
+        // Copy script
         (function() {
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
@@ -359,7 +357,6 @@
             }
             copyBtn.addEventListener('click', doCopy);
 
-            // Terminal copy button
             const termCopyBtn = document.getElementById('termCopyBtn');
             termCopyBtn.addEventListener('click', () => {
                 doCopy();
