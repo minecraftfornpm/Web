@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/minecraftfornpm/For-me/refs/heads/main/SolXaysMOD.lua?token=GHSAT0AAAAAAEGYGBDAWFZ63OU242GY6QGI2VP3N7Q"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/minecraftfornpm/48b9086db3a0f5fd4d3709c04c2091e5/raw/30dd4a7bd0e1490b7b77ad8ee87b17b13f63c339/Solxays.lua"))()
