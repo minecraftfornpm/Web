@@ -7,238 +7,171 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #070b14;
-            color: #cbd5e1;
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #d4d4d4;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2rem 1rem;
         }
-        @keyframes fadeSlideUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.25), 0 0 60px rgba(56, 189, 248, 0.1); }
-            50% { box-shadow: 0 0 45px rgba(56, 189, 248, 0.5), 0 0 90px rgba(56, 189, 248, 0.2); }
-        }
         .card {
-            max-width: 700px;
+            max-width: 640px;
             width: 100%;
-            background: #0d1526;
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-            border: 1px solid #1e3a5f;
+            background: #111;
+            border-radius: 8px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #262626;
             text-align: center;
-            animation: fadeSlideUp 0.7s ease-out;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .top-icon {
-            width: 480px;
-            max-width: 90%;
+            width: 380px;
+            max-width: 85%;
             height: auto;
             border-radius: 50%;
-            background: #070b14;
-            padding: 12px;
-            border: 3px solid #1e3a5f;
-            object-fit: contain;
-            margin: 0 auto 1.5rem;
+            background: #0a0a0a;
+            padding: 8px;
+            border: 2px solid #262626;
+            margin: 0 auto 1rem;
             display: block;
-            animation: pulseGlow 3s ease-in-out infinite;
         }
 
         .typed-title {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            color: #ffffff;
-            min-height: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+            letter-spacing: 3px;
+            color: #e5e5e5;
+            min-height: 2.7rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Courier New', monospace;
         }
 
-        .tagline {
-            font-size: 0.95rem;
-            color: #7d8fa3;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            padding: 0 0.5rem;
-        }
-
-        .btn-group {
+        .btn-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.6rem;
             justify-content: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
+            padding: 0.6rem 1.3rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: 'Consolas', monospace;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            border: 1px solid #1e3a5f;
-            transition: all 0.2s ease;
-            background: #0f1e33;
-            color: #93c5fd;
-            min-width: 130px;
+            border: 1px solid #303030;
+            background: #161616;
+            color: #a3a3a3;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+            min-width: 120px;
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
-            border-color: #38bdf8;
-            color: #e0f2fe;
+            background: #1f1f1f;
+            border-color: #4a4a4a;
+            color: #e5e5e5;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #0284c7, #06b6d4);
-            border-color: #0ea5e9;
-            color: #ffffff;
-            font-size: 1.15rem;
-            padding: 0.9rem 2.2rem;
-            min-width: 180px;
-            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.5);
+            background: #1a3d24;
+            border-color: #2a5c38;
+            color: #7fdf9a;
+            font-size: 1rem;
+            padding: 0.75rem 2rem;
+            min-width: 160px;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
-            border-color: #38bdf8;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 28px rgba(56, 189, 248, 0.65);
-            color: #ffffff;
+            background: #224d2e;
+            border-color: #3a7a4a;
+            color: #a8f0be;
         }
 
         .toast {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: #7d8fa3;
-            min-height: 1.5rem;
-            transition: opacity 0.3s;
-            opacity: 0;
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #555;
+            min-height: 1.3rem;
+            transition: color 0.3s;
         }
-        .toast.show { opacity: 1; color: #38bdf8; }
+        .toast.show { color: #7fdf9a; }
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0 0 1rem 0;
-            color: #ffffff;
-            border-bottom: 1px solid #1e3a5f;
-            padding-bottom: 0.5rem;
-            text-align: left;
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-        }
-        .faq-item {
-            background: #0a1220;
-            border-radius: 8px;
-            padding: 1rem 1.2rem;
-            margin: 0.8rem 0;
-            border-left: 3px solid #0ea5e9;
-            text-align: left;
-        }
-        .faq-item h3 {
-            color: #ffffff;
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-        }
-        .faq-item p {
-            color: #7d8fa3;
-            line-height: 1.5;
-            font-size: 0.9rem;
-        }
-
-        /* Terminal / executor */
         .terminal {
-            background: #050a14;
-            border: 1px solid #1e3a5f;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 40px rgba(56, 189, 248, 0.05);
+            background: #0d0d0d;
+            border: 1px solid #262626;
+            border-radius: 6px;
             overflow: hidden;
             text-align: left;
-            max-width: 700px;
+            max-width: 640px;
             width: 100%;
-            animation: fadeSlideUp 0.9s ease-out;
         }
         .terminal-header {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 0.6rem 0.8rem;
-            background: #0a1220;
-            border-bottom: 1px solid #1e3a5f;
+            gap: 5px;
+            padding: 0.5rem 0.7rem;
+            background: #161616;
+            border-bottom: 1px solid #262626;
         }
-        .dot {
-            width: 12px; height: 12px;
-            border-radius: 50%;
-        }
-        .dot.red { background: #0ea5e9; opacity: 0.7; }
-        .dot.yellow { background: #38bdf8; opacity: 0.7; }
-        .dot.green { background: #67e8f9; opacity: 0.7; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot.r { background: #5c2a2a; }
+        .dot.y { background: #5c4a2a; }
+        .dot.g { background: #2a5c38; }
         .terminal-title {
-            margin-left: 10px;
-            font-size: 0.8rem;
-            color: #64748b;
+            margin-left: 8px;
+            font-size: 0.72rem;
+            color: #555;
             letter-spacing: 1px;
-            font-family: 'Courier New', monospace;
         }
-        .terminal-actions {
-            margin-left: auto;
-            display: flex;
-            gap: 0.4rem;
-        }
+        .terminal-actions { margin-left: auto; }
         .terminal-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-family: 'Consolas', monospace;
             font-weight: 600;
-            font-family: 'Courier New', monospace;
             cursor: pointer;
-            text-decoration: none;
-            border: 1px solid #1e3a5f;
-            background: #0f1e33;
-            color: #93c5fd;
-            transition: all 0.15s ease;
+            border: 1px solid #303030;
+            background: #1a1a1a;
+            color: #a3a3a3;
+            transition: background 0.15s, color 0.15s;
         }
         .terminal-btn:hover {
-            background: #15304f;
-            border-color: #38bdf8;
-            color: #e0f2fe;
+            background: #252525;
+            color: #e5e5e5;
         }
         .terminal-btn.primary {
-            background: linear-gradient(135deg, #0284c7, #06b6d4);
-            border-color: #0ea5e9;
-            color: #fff;
+            background: #1a3d24;
+            border-color: #2a5c38;
+            color: #7fdf9a;
         }
         .terminal-btn.primary:hover {
-            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
-            border-color: #38bdf8;
+            background: #224d2e;
+            color: #a8f0be;
         }
         .terminal-body {
-            padding: 1.2rem 1.4rem;
-            font-family: 'Courier New', Consolas, monospace;
-            font-size: 0.95rem;
-            color: #67e8f9;
-            min-height: 140px;
-            line-height: 1.6;
+            padding: 1rem 1.2rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.82rem;
+            color: #b0b0b0;
+            min-height: 110px;
+            line-height: 1.7;
+            word-break: break-all;
         }
-        .terminal-body .prompt { color: #38bdf8; }
+        .terminal-body .prompt { color: #5a8a6a; }
+        .terminal-body .ok { color: #7fdf9a; }
         .cursor {
             display: inline-block;
-            background: #38bdf8;
-            width: 9px;
-            height: 1.05em;
+            background: #a3a3a3;
+            width: 8px;
+            height: 1em;
             vertical-align: text-bottom;
-            animation: blink 0.9s steps(2) infinite;
+            animation: blink 1s steps(2) infinite;
         }
         @keyframes blink {
             0%, 49% { opacity: 1; }
@@ -246,196 +179,153 @@
         }
 
         @media (max-width: 520px) {
-            .card { padding: 1.5rem 1rem; }
-            .typed-title { font-size: 1.8rem; letter-spacing: 1px; }
-            .top-icon { width: 240px; padding: 8px; }
-            .btn { min-width: 110px; padding: 0.6rem 1.1rem; font-size: 0.8rem; }
-            .btn-primary { min-width: 160px; font-size: 1rem; padding: 0.8rem 1.8rem; }
-            .terminal-body { font-size: 0.75rem; }
-            .terminal-btn { font-size: 0.65rem; padding: 0.25rem 0.55rem; }
-            .terminal-title { font-size: 0.7rem; }
+            .card { padding: 1.2rem 0.9rem; }
+            .typed-title { font-size: 1.6rem; letter-spacing: 2px; }
+            .top-icon { width: 220px; }
+            .btn { min-width: 100px; padding: 0.5rem 1rem; font-size: 0.75rem; }
+            .btn-primary { min-width: 140px; font-size: 0.9rem; }
+            .terminal-body { font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main card -->
     <div class="card">
         <img class="top-icon" src="https://github.com/minecraftfornpm/Web/raw/refs/heads/main/Kohlsify.png" alt="Kohlsify" />
         <h1 class="typed-title" id="typedTitle"></h1>
-        <p class="tagline">
-            The best (3-5) script for KAH X/Legacy, fully open source,<br>
-            semi-private, many updates
-        </p>
 
-        <div class="btn-group">
-            <a href="https://pastebin.com/raw/hGDHh7nA" target="_blank" rel="noopener noreferrer" class="btn">See source</a>
-            <button id="copyBtn" class="btn btn-primary">Copy script</button>
+        <div class="btn-row">
+            <a href="https://gist.githubusercontent.com/minecraftfornpm/c87c4be0b7b98f6a3cf37ae9e102b270/raw/4f1e0f365c2c52907bc38850eed0837eb8f73a9c/Kohlsify.lua" target="_blank" rel="noopener noreferrer" class="btn">see source</a>
+            <button id="copyBtn" class="btn btn-primary">copy script</button>
         </div>
-        <div class="btn-group">
-            <a href="https://pastebin.com/raw/NnfhEh4r" target="_blank" rel="noopener noreferrer" class="btn">See source (UI)</a>
+        <div class="btn-row">
+            <a href="https://gist.githubusercontent.com/minecraftfornpm/f91d5f296e81cf89ba86ba8d4114602a/raw/14d11286ac767bbda0d942947dca3b189c244afa/Ui.lua" target="_blank" rel="noopener noreferrer" class="btn">see source (UI)</a>
         </div>
 
-        <div id="toast" class="toast">Copied to clipboard!</div>
+        <div id="toast" class="toast">copied</div>
     </div>
 
-    <!-- FAQ card -->
-    <div class="card">
-        <h2 class="section-title">FAQ</h2>
-        <div class="faq-item">
-            <h3>Script is free?</h3>
-            <p>Yes, script is fully free, no paid versions.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Script is have key?</h3>
-            <p>No, script is no have key.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Is it safe to use?</h3>
-            <p>Yes, it's fully open source. You can review the code yourself.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Where can I use it?</h3>
-            <p>Kohls Admin House X (main). Also works on Kohls Admin House Legacy, but not recommended – may work poorly.</p>
-        </div>
-        <div class="faq-item">
-            <h3>Who created Kohlsify?</h3>
-            <p>nowhud (nowhudhejeir on Roblox).</p>
-        </div>
-    </div>
-
-    <!-- Terminal / executor window -->
     <div class="terminal">
         <div class="terminal-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+            <span class="dot r"></span>
+            <span class="dot y"></span>
+            <span class="dot g"></span>
             <span class="terminal-title">skid executor</span>
             <div class="terminal-actions">
-                <button class="terminal-btn primary" id="termCopyBtn">Copy</button>
+                <button class="terminal-btn primary" id="termCopyBtn">copy</button>
             </div>
         </div>
         <div class="terminal-body" id="terminalBody"></div>
     </div>
 
     <script>
-        const SCRIPT_TEXT = `loadstring(game:HttpGet("https://pastebin.com/raw/hGDHh7nA"))()`;
+        const SCRIPT_TEXT = `loadstring(game:HttpGet("https://gist.githubusercontent.com/minecraftfornpm/c87c4be0b7b98f6a3cf37ae9e102b270/raw/4f1e0f365c2c52907bc38850eed0837eb8f73a9c/Kohlsify.lua"))()`;
 
-        // Copy script
         (function() {
             const copyBtn = document.getElementById('copyBtn');
+            const termCopyBtn = document.getElementById('termCopyBtn');
             const toast = document.getElementById('toast');
-            let timeoutId = null;
-            function showToast(message) {
-                toast.textContent = message;
+            let t = null;
+            function showToast(msg) {
+                toast.textContent = msg;
                 toast.classList.add('show');
-                if (timeoutId) clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
+                if (t) clearTimeout(t);
+                t = setTimeout(() => {
                     toast.classList.remove('show');
-                    timeoutId = null;
-                }, 2500);
+                    t = null;
+                }, 2200);
             }
             function doCopy() {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                    return navigator.clipboard.writeText(SCRIPT_TEXT).then(() => showToast('Copied to clipboard!'));
+                    return navigator.clipboard.writeText(SCRIPT_TEXT).then(() => showToast('copied'));
                 }
                 return new Promise((resolve) => {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = SCRIPT_TEXT;
-                    document.body.appendChild(textarea);
-                    textarea.select();
+                    const ta = document.createElement('textarea');
+                    ta.value = SCRIPT_TEXT;
+                    document.body.appendChild(ta);
+                    ta.select();
                     try {
                         document.execCommand('copy');
-                        showToast('Copied to clipboard!');
+                        showToast('copied');
                     } catch (e) {
-                        showToast('Failed to copy. Please copy manually.');
+                        showToast('copy failed');
                     }
-                    document.body.removeChild(textarea);
+                    document.body.removeChild(ta);
                     resolve();
                 });
             }
             copyBtn.addEventListener('click', doCopy);
-
-            const termCopyBtn = document.getElementById('termCopyBtn');
-            termCopyBtn.addEventListener('click', () => {
-                doCopy();
-            });
+            termCopyBtn.addEventListener('click', doCopy);
         })();
 
-        // Type only when visible
-        function typeText(element, text, speed, callback) {
+        function typeText(el, text, speed, cb) {
             let i = 0;
-            element.textContent = '';
-            const interval = setInterval(() => {
+            el.textContent = '';
+            const iv = setInterval(() => {
                 if (i < text.length) {
-                    element.textContent = text.substring(0, i + 1) + '_';
+                    el.textContent = text.substring(0, i + 1) + '_';
                     i++;
                 } else {
-                    element.textContent = text;
-                    clearInterval(interval);
-                    if (callback) callback();
+                    el.textContent = text;
+                    clearInterval(iv);
+                    if (cb) cb();
                 }
             }, speed);
         }
 
-        // Title typing when visible
         const titleEl = document.getElementById('typedTitle');
-        const titleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    typeText(titleEl, 'KOHLSIFY', 180);
-                    titleObserver.unobserve(entry.target);
+        const titleObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    typeText(titleEl, 'KOHLSIFY', 160);
+                    titleObs.unobserve(e.target);
                 }
             });
         }, { threshold: 0.3 });
-        titleObserver.observe(titleEl);
+        titleObs.observe(titleEl);
 
-        // Terminal typing when visible
-        const terminal = document.querySelector('.terminal');
-        const terminalObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startTerminalTyping();
-                    terminalObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        terminalObserver.observe(terminal);
-
-        let terminalStarted = false;
-        function startTerminalTyping() {
-            if (terminalStarted) return;
-            terminalStarted = true;
-
+        let started = false;
+        function startTerminal() {
+            if (started) return;
+            started = true;
             const body = document.getElementById('terminalBody');
-            const prompt = document.createElement('div');
-            prompt.innerHTML = '<span class="prompt">$</span> ';
-            body.appendChild(prompt);
-
+            const line = document.createElement('div');
+            line.innerHTML = '<span class="prompt">$</span> ';
+            body.appendChild(line);
             const codeSpan = document.createElement('span');
-            prompt.appendChild(codeSpan);
-
+            line.appendChild(codeSpan);
             const cursor = document.createElement('span');
             cursor.className = 'cursor';
-            prompt.appendChild(cursor);
+            line.appendChild(cursor);
 
             let i = 0;
             function typeCode() {
                 if (i < SCRIPT_TEXT.length) {
                     codeSpan.textContent += SCRIPT_TEXT.charAt(i);
                     i++;
-                    setTimeout(typeCode, 40);
+                    setTimeout(typeCode, 18);
                 } else {
                     setTimeout(() => {
                         cursor.style.display = 'none';
                         const done = document.createElement('div');
-                        done.innerHTML = '<span class="prompt">$</span> <span style="color:#67e8f9;">Script loaded successfully.</span>';
+                        done.innerHTML = '<span class="prompt">$</span> <span class="ok">script loaded</span>';
                         body.appendChild(done);
-                    }, 500);
+                    }, 400);
                 }
             }
             typeCode();
         }
+
+        const term = document.querySelector('.terminal');
+        const termObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    startTerminal();
+                    termObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        termObs.observe(term);
     </script>
 
 </body>
