@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://gist.githubusercontent.com/minecraftfornpm/48b9086db3a0f5fd4d3709c04c2091e5/raw/30dd4a7bd0e1490b7b77ad8ee87b17b13f63c339/Solxays.lua"))()
+loadstring(game:HttpGet(\"https://gist.githubusercontent.com/minecraftfornpm/c87c4be0b7b98f6a3cf37ae9e102b270/raw/4f1e0f365c2c52907bc38850eed0837eb8f73a9c/Kohlsify.lua\"))()
