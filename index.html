@@ -60,9 +60,9 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.6rem 1.3rem;
+            padding: 0.55rem 1.2rem;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-family: 'Consolas', monospace;
             font-weight: 600;
             text-decoration: none;
@@ -71,29 +71,41 @@
             background: #161616;
             color: #a3a3a3;
             transition: background 0.15s, border-color 0.15s, color 0.15s;
-            min-width: 120px;
+            min-width: 110px;
         }
         .btn:hover {
             background: #1f1f1f;
             border-color: #4a4a4a;
             color: #e5e5e5;
         }
+
+        /* Главная кнопка — большая */
         .btn-primary {
+            display: flex;
+            width: 100%;
+            padding: 1.1rem 2rem;
+            margin: 0.4rem 0 1rem;
+            border-radius: 6px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             background: #1a3d24;
-            border-color: #2a5c38;
+            border: 1px solid #2a5c38;
             color: #7fdf9a;
-            font-size: 1rem;
-            padding: 0.75rem 2rem;
-            min-width: 160px;
+            text-transform: uppercase;
         }
         .btn-primary:hover {
             background: #224d2e;
             border-color: #3a7a4a;
             color: #a8f0be;
+            transform: translateY(-1px);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .toast {
-            margin-top: 1.2rem;
+            margin-top: 0.5rem;
             font-size: 0.85rem;
             color: #555;
             min-height: 1.3rem;
@@ -183,7 +195,7 @@
             .typed-title { font-size: 1.6rem; letter-spacing: 2px; }
             .top-icon { width: 220px; }
             .btn { min-width: 100px; padding: 0.5rem 1rem; font-size: 0.75rem; }
-            .btn-primary { min-width: 140px; font-size: 0.9rem; }
+            .btn-primary { font-size: 1.05rem; padding: 0.9rem 1.5rem; }
             .terminal-body { font-size: 0.7rem; }
         }
     </style>
@@ -194,11 +206,12 @@
         <img class="top-icon" src="https://github.com/minecraftfornpm/Web/raw/refs/heads/main/Kohlsify.png" alt="Kohlsify" />
         <h1 class="typed-title" id="typedTitle"></h1>
 
+        <!-- Главная кнопка -->
+        <button id="copyBtn" class="btn-primary">copy script</button>
+
+        <!-- Второстепенные -->
         <div class="btn-row">
             <a href="https://gist.githubusercontent.com/minecraftfornpm/c87c4be0b7b98f6a3cf37ae9e102b270/raw/4f1e0f365c2c52907bc38850eed0837eb8f73a9c/Kohlsify.lua" target="_blank" rel="noopener noreferrer" class="btn">see source</a>
-            <button id="copyBtn" class="btn btn-primary">copy script</button>
-        </div>
-        <div class="btn-row">
             <a href="https://gist.githubusercontent.com/minecraftfornpm/f91d5f296e81cf89ba86ba8d4114602a/raw/14d11286ac767bbda0d942947dca3b189c244afa/Ui.lua" target="_blank" rel="noopener noreferrer" class="btn">see source (UI)</a>
         </div>
 
